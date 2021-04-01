@@ -1,33 +1,55 @@
+students = []
 
-student = dict.fromkeys(['first_name','last_name','middle_initial','address','email','phone_number'])
+while True:
 
-#Prompt user for student's identification information 
-first_name = input('Please enter the student\'s first name: ')
-last_name = input('Please enter the student\'s last name: ')
-middle_initial = input('Please enter the student\'s middle initial: ')
+    student = dict.fromkeys(['first_name','last_name','middle_initial','address','email','phone_number'])
 
-#Prompt user for student's contact information
-address = input('Please enter the student\'s address: ')
-email = input('Please enter the student\'s email: ')
-phone_number = input('Please enter the student\'s phone number: ')
+    #Prompt user for student's identification information 
+    student['first_name'] = input('Please enter the student\'s first name: ')
+    student['last_name'] = input('Please enter the student\'s last name: ')
+    student['middle_initial'] = input('Please enter the student\'s middle initial: ')
 
-#Seperator
-print('-' * 18)
+    #Prompt user for student's contact information
+    student['address'] = input('Please enter the student\'s address: ')
+    student['email'] = input('Please enter the student\'s email: ')
+    student['phone_number'] = input('Please enter the student\'s phone number: ')
 
-#Print everything to the console 
+    #Seperator
+    print('-' * 18)
 
-# print('The student\'s first name is {0}'.format(first_name))
-# print('The student\'s last name is {0}'.format(last_name))
-# print('The student\'s middle initial is {0}'.format(middle_initial))
+    #Print everything to the console 
 
-# print('The student\'s address is {0}'.format(address))
-# print('The student\'s email is {0}'.format(email))
-# print('The student\'s phone number is {0}'.format(phone_number))
+    # print('The student\'s first name is {0}'.format(first_name))
+    # print('The student\'s last name is {0}'.format(last_name))
+    # print('The student\'s middle initial is {0}'.format(middle_initial))
 
-for key, value in student.items(): print('The student\'s {0}is {1}. '.format(key,value))
+    # print('The student\'s address is {0}'.format(address))
+    # print('The student\'s email is {0}'.format(email))
+    # print('The student\'s phone number is {0}'.format(phone_number))
 
-#Seperator 
-print('-' * 18)
+    for key, value in student.items(): print('The student\'s {0}is {1}. '.format(key, value))
 
-#Confirmation 
-confirmation = input('Is this information correct?(Y/N) ')
+    #Seperator 
+    print('-' * 18)
+
+    #Confirmation 
+    # confirmation = input('Is this information correct?(Y/N) ')
+
+    if input('Is the information correct? (Y/n) ').lower() == 'y' : students.append(student)
+    print(students)
+
+    #Prompt user to add more student information 
+    if input('Would you like to input another student\'s information? (Y/n)').lower() == 'y':
+        continue
+    else:
+        print('You\'ve enter the following student profiles: ')
+
+        print ('-' * 18)
+
+        for student in students:
+            for key, value in student.items():
+                print('The student\'s {0} is {1}. '.format(key, value))
+
+        print('-' * 18)
+
+        break
