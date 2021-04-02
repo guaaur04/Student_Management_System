@@ -1,23 +1,25 @@
 from helpers import *
 
-students = []
+from Roster import Roster
+
+from Student import Student 
+
+#Roster
+roster = Roster()
 
 while True:
     # Get student information
     first, last, middle, address, email, phone = get_student_information()
 
     # Create a student
-    student = create_student(first_name=first, last_name=last,
-                             middle_initial=middle, address=address, email=email,
-                             phone_number=phone)
+    student = Student(first, last, middle, address, email, phone)
 
-    print_student(student)
-
+    student.print_info()
     if confirm('Is this information correct? (Y/n) '):
-        students.append(student)
+        roster.add(student)
 
         if confirm('Would you like to input another student\'s information? (Y/n) '):
             continue
         else:
-            print_summary(students)
+            roster.summarize()
             break
