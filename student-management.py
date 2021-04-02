@@ -1,45 +1,23 @@
+from helpers import *
+
 students = []
 
 while True:
+    # Get student information
+    first, last, middle, address, email, phone = get_student_information()
 
-    student = dict.fromkeys(['first_name','last_name','middle_initial','address','email','phone_number'])
+    # Create a student
+    student = create_student(first_name=first, last_name=last,
+                             middle_initial=middle, address=address, email=email,
+                             phone_number=phone)
 
-    #Prompt user for student's identification information 
-    student['first_name'] = input('Please enter the student\'s first name: ')
-    student['last_name'] = input('Please enter the student\'s last name: ')
-    student['middle_initial'] = input('Please enter the student\'s middle initial: ')
+    print_student(student)
 
-    #Prompt user for student's contact information
-    student['address'] = input('Please enter the student\'s address: ')
-    student['email'] = input('Please enter the student\'s email: ')
-    student['phone_number'] = input('Please enter the student\'s phone number: ')
+    if confirm('Is this information correct? (Y/n) '):
+        students.append(student)
 
-    #Seperator
-    print('-' * 18)
-
-    for key, value in student.items(): print('The student\'s {0}is {1}. '.format(key, value))
-
-    #Seperator 
-    print('-' * 18)
-
-    #Confirmation 
-    # confirmation = input('Is this information correct?(Y/N) ')
-
-    if input('Is the information correct? (Y/n) ').lower() == 'y' : students.append(student)
-    print(students)
-
-    #Prompt user to add more student information 
-    if input('Would you like to input another student\'s information? (Y/n)').lower() == 'y':
-        continue
-    else:
-        print('You\'ve enter the following student profiles: ')
-
-        print ('-' * 18)
-
-        for student in students:
-            for key, value in student.items():
-                print('The student\'s {0} is {1}. '.format(key, value))
-
-        print('-' * 18)
-
-        break
+        if confirm('Would you like to input another student\'s information? (Y/n) '):
+            continue
+        else:
+            print_summary(students)
+            break
