@@ -12,6 +12,13 @@ def get_student_information():
 
 def create_student(**student):
 
+    """
+    Triple-quotes before a function is a docstring, and provides details about how a function works, and how to use it.  
+
+    create_student creates a student dictionary with the data in information array 
+
+    """
+
     _student = dict.fromkeys(
         ['first_name', 'last_name', 'middle_initial', 'address', 'email', 'phone_number'])
 
